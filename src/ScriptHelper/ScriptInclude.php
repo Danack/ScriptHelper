@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ScriptServer;
+namespace ScriptHelper;
 
 interface ScriptInclude
 {

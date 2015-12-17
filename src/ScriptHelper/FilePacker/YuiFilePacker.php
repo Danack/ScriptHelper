@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ScriptServer\FilePacker;
+namespace ScriptHelper\FilePacker;
 
 use FileFilter\ConcatenatingFilter;
 use FileFilter\GzipFilter;
@@ -10,7 +10,7 @@ use Tier\Path\CachePath;
 use Tier\Path\WebRootPath;
 use Tier\Path\ExternalLibPath;
 use FileFilter\File;
-use ScriptServer\FilePacker;
+use ScriptHelper\FilePacker;
 use FileFilter\YuiCompressorFilterFactory;
 
 

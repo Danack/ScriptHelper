@@ -1,9 +1,9 @@
 <?php
 
 
-namespace ScriptServer\FilePacker;
+namespace ScriptHelper\FilePacker;
 
-use ScriptServer\FilePacker;
+use ScriptHelper\FilePacker;
 use Intahwebz\FileFilter\ConcatenatingFilter;
 use Intahwebz\FileFilter\GzipFilter;
 use Intahwebz\FileFilter\YuiCompressorFilter;
@@ -12,7 +12,7 @@ use Blog\Value\AutogenPath;
 use Blog\Value\WebRootPath;
 use Blog\Value\ExternalLibPath;
 use Intahwebz\File;
-use Intahwebz\YuiCompressorPath;
+use FileFilter\YuiCompressorPath;
 
 class StandardFilePacker implements FilePacker
 {

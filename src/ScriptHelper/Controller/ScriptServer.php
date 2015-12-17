@@ -1,9 +1,9 @@
 <?php
 
-namespace ScriptServer\Controller;
+namespace ScriptHelper\Controller;
 
 use Tier\Path\WebRootPath;
-use ScriptServer\FilePacker;
+use ScriptHelper\FilePacker;
 use Room11\HTTP\Request;
 use Room11\HTTP\Response;
 use Tier\ResponseBody\CachingGeneratingFileResponseFactory;

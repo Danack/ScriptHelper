@@ -1,10 +1,10 @@
 <?php
 
-namespace ScriptServer\ScriptInclude;
+namespace ScriptHelper\ScriptInclude;
 
-use ScriptServer\CSSFile;
-use ScriptServer\ScriptInclude;
-use ScriptServer\ScriptURLGenerator;
+use ScriptHelper\CSSFile;
+use ScriptHelper\ScriptInclude;
+use ScriptHelper\ScriptURLGenerator;
 
 
 class ScriptIncludePacked extends AbstractScriptInclude

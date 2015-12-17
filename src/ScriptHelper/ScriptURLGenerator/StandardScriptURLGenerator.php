@@ -1,12 +1,12 @@
 <?php
 
 
-namespace ScriptServer\ScriptURLGenerator;
+namespace ScriptHelper\ScriptURLGenerator;
 
 use Blog\Route;
-use ScriptServer\CSSFile;
-use ScriptServer\ScriptURLGenerator;
-use ScriptServer\ScriptVersion;
+use ScriptHelper\CSSFile;
+use ScriptHelper\ScriptURLGenerator;
+use ScriptHelper\ScriptVersion;
 
 
 

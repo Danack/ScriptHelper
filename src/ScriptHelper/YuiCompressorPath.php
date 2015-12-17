@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ScriptServer;
+namespace ScriptHelper;
 
 use Tier\Path;
 

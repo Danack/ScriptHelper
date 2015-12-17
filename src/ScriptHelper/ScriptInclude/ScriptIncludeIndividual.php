@@ -1,9 +1,9 @@
 <?php
 
-namespace ScriptServer\ScriptInclude;
+namespace ScriptHelper\ScriptInclude;
 
-use ScriptServer\ScriptInclude;
-use ScriptServer\ScriptURLGenerator;
+use ScriptHelper\ScriptInclude;
+use ScriptHelper\ScriptURLGenerator;
 
 class ScriptIncludeIndividual extends AbstractScriptInclude
 {

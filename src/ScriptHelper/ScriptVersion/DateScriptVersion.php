@@ -1,8 +1,8 @@
 <?php
 
-namespace ScriptServer\ScriptVersion;
+namespace ScriptHelper\ScriptVersion;
 
-use ScriptServer\ScriptVersion;
+use ScriptHelper\ScriptVersion;
 
 class DateScriptVersion implements ScriptVersion
 {

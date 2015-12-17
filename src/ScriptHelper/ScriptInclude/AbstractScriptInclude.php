@@ -1,9 +1,9 @@
 <?php
 
-namespace ScriptServer\ScriptInclude;
+namespace ScriptHelper\ScriptInclude;
 
-use ScriptServer\ScriptInclude;
-use ScriptServer\CSSFile;
+use ScriptHelper\ScriptInclude;
+use ScriptHelper\CSSFile;
 
 abstract class AbstractScriptInclude implements ScriptInclude
 {
@@ -52,13 +52,13 @@ abstract class AbstractScriptInclude implements ScriptInclude
     {
         $output = "";
         $output .= "<script type='text/javascript'>";
-        $output .= "try {\n";
+        //$output .= "try {\n";
 
         foreach ($this->onBodyLoadJavascript as $functionToPerform) {
             $output .= $functionToPerform."\n";
         }
 
-        $output .= " }";
+        //$output .= " }";
         $output .= "</script>";
 
         return $output;
