@@ -1,14 +1,10 @@
 <?php
 
-
 namespace ScriptHelper\ScriptURLGenerator;
 
-use Blog\Route;
 use ScriptHelper\CSSFile;
 use ScriptHelper\ScriptURLGenerator;
 use ScriptHelper\ScriptVersion;
-
-
 
 class StandardScriptURLGenerator implements ScriptURLGenerator
 {
@@ -48,7 +44,7 @@ class StandardScriptURLGenerator implements ScriptURLGenerator
             $separator = ',';
         }
         
-        return Route::jsInclude($commaSeparatedValues).'?version='.$this->scriptVersion->getVersion();
+        return"/js/".$commaSeparatedValues.'?version='.$this->scriptVersion->getVersion();
     }
     
     /**
