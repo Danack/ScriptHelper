@@ -5,8 +5,8 @@ namespace ScriptHelper\Controller;
 use Tier\Path\WebRootPath;
 use ScriptHelper\FilePacker;
 use Room11\HTTP\Request;
-use Room11\HTTP\Response;
-use Tier\ResponseBody\CachingGeneratingFileResponseFactory;
+use Tier\Body\CallableFileGenerator;
+use Tier\Body\CachingGeneratingFileBodyFactory;
 
 function extractItems($cssInclude)
 {
@@ -41,19 +41,20 @@ class ScriptServer
      */
     private $filePacker;
 
-    /** @var CachingGeneratingFileResponseFactory  */
-    private $fileResponseFactory;
+    /** @var CachingGeneratingFileBodyFactory  */
+    private $fileBodyFactory;
+    
+    /** @var  WebRootPath Path to the public web root */
+    private $webRootPath;
     
     public function __construct(
-        Response $response,
-        CachingGeneratingFileResponseFactory $fileResponseFactory,
+        CachingGeneratingFileBodyFactory $fileBodyFactory,
         FilePacker $filePacker,
         WebRootPath $webRootPath
     ) {
-        $this->fileResponseFactory = $fileResponseFactory;
+        $this->fileBodyFactory = $fileBodyFactory;
         $this->webRootPath = $webRootPath->getPath();
         $this->filePacker = $filePacker;
-        $this->response = $response;
     }
 
     /**
@@ -153,14 +154,22 @@ class ScriptServer
     private function getPackedFiles($jsIncludeArray, $appendLine, $contentType, $extension)
     {
         $finalFilename = $this->filePacker->getFinalFilename($jsIncludeArray, $extension);
-        $fn = function () use ($jsIncludeArray, $appendLine, $extension) {
+        $fn = function () use ($jsIncludeArray, $appendLine, $extension, $finalFilename) {
             $this->filePacker->pack($jsIncludeArray, $appendLine, $extension);
+            
+            return $finalFilename;
         };
 
-        return $this->fileResponseFactory->create(
-            $finalFilename,
-            $contentType,
+        $fileModifiedTime = @filemtime($finalFilename);
+
+        $fileGenerator = new CallableFileGenerator(
             $fn,
+            $fileModifiedTime
+        );
+
+        return $this->fileBodyFactory->create(
+            $contentType,
+            $fileGenerator,
             $this->filePacker->getHeaders()
         );
     }
