@@ -4,7 +4,6 @@ namespace ScriptHelper\Controller;
 
 use Tier\Path\WebRootPath;
 use ScriptHelper\FilePacker;
-use Room11\HTTP\Request;
 use Tier\Body\CallableFileGenerator;
 use Tier\Body\CachingGeneratingFileBodyFactory;
 
@@ -44,7 +43,7 @@ class ScriptServer
     /** @var CachingGeneratingFileBodyFactory  */
     private $fileBodyFactory;
     
-    /** @var  WebRootPath Path to the public web root */
+    /** @var string Path to the public web root */
     private $webRootPath;
     
     public function __construct(
@@ -91,7 +90,7 @@ class ScriptServer
     {
         $jsIncludeItem = str_replace(array("\\", ".."), "", $jsIncludeItem);
 
-        return $this->webRootPath . "js/" . $jsIncludeItem . ".js";
+        return $this->webRootPath."js/".$jsIncludeItem.".js";
     }
 
     /**
@@ -109,11 +108,6 @@ class ScriptServer
         return $files;
     }
 
-    /**
-     * @param Request $request
-     * @param $cssInclude
-     * @return \Room11\HTTP\Body
-     */
     public function serveCSS($commaSeparatedFilenames)
     {
         $cssIncludeArray = $this->getCSSFilesToInclude($commaSeparatedFilenames);
@@ -126,12 +120,6 @@ class ScriptServer
         );
     }
 
-
-    /**
-     * @param Request $request
-     * @param $jsInclude
-     * @return \Room11\HTTP\Body
-     */
     public function serveJavascript($commaSeparatedFilenames)
     {
         $jsIncludeArray = $this->getJSFilesToInclude($commaSeparatedFilenames);
