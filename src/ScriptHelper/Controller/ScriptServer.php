@@ -2,7 +2,7 @@
 
 namespace ScriptHelper\Controller;
 
-use Tier\Path\WebRootPath;
+use ScriptHelper\ScriptPath;
 use ScriptHelper\FilePacker;
 use Tier\Body\CallableFileGenerator;
 use Tier\Body\CachingGeneratingFileBodyFactory;
@@ -44,15 +44,15 @@ class ScriptServer
     private $fileBodyFactory;
     
     /** @var string Path to the public web root */
-    private $webRootPath;
+    private $scriptPath;
     
     public function __construct(
         CachingGeneratingFileBodyFactory $fileBodyFactory,
         FilePacker $filePacker,
-        WebRootPath $webRootPath
+        ScriptPath $scriptPath
     ) {
         $this->fileBodyFactory = $fileBodyFactory;
-        $this->webRootPath = $webRootPath->getPath();
+        $this->scriptPath = $scriptPath->getPath();
         $this->filePacker = $filePacker;
     }
 
@@ -79,7 +79,7 @@ class ScriptServer
     {
         $cssIncludeItem = str_replace(array("\\", ".." ), "", $cssIncludeItem);
 
-        return $this->webRootPath."/css/".$cssIncludeItem.".css";
+        return $this->scriptPath."/css/".$cssIncludeItem.".css";
     }
 
     /**
@@ -90,7 +90,7 @@ class ScriptServer
     {
         $jsIncludeItem = str_replace(array("\\", ".."), "", $jsIncludeItem);
 
-        return $this->webRootPath."js/".$jsIncludeItem.".js";
+        return $this->scriptPath."js/".$jsIncludeItem.".js";
     }
 
     /**
@@ -154,9 +154,12 @@ class ScriptServer
             $fn,
             $fileModifiedTime
         );
+        
+        $downloadFilename = implode('_', $jsIncludeArray);
 
         return $this->fileBodyFactory->create(
             $contentType,
+            $downloadFilename,
             $fileGenerator,
             $this->filePacker->getHeaders()
         );

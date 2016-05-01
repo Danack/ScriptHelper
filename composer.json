@@ -10,8 +10,11 @@
     ],
 
     "require-dev": {
+        "danack/tier": "dev-master",
         "phpunit/phpunit": "4.6.6",
-        "rdlowrey/auryn": "^1.0.2"
+        "rdlowrey/auryn": "^1.0.2",
+        "room11/caching": "^0.0.4", 
+        "room11/http": "^0.2.1"
     },
     "require": {
     },
